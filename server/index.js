@@ -7,14 +7,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, { cors: { origin: 'wss://chat-cheetah.onrender.com' } });
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 const messages = [];
-
-app.use(express.static(path.join(__dirname, 'dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
 
 io.on('connection', (socket) => {
   console.log('Usuário conectado!', socket.id);
