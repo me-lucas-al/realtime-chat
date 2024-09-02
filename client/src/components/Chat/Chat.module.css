@@ -9,7 +9,7 @@
     }
   .chat-body{
     padding: 0 10px;
-    height: 550px;
+    height: 65vh;
     overflow-y: scroll;
     color: #000;
     display: flex;
@@ -38,5 +38,5 @@
     display:flex;
     align-items: center;
     bottom: 0;
-    height: 50px;
+    height: 10%;
   }

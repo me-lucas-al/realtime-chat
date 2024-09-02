@@ -72,7 +72,7 @@ export default function Chat({ socket }) {
 
   return (
     <div>
-      <img src={logo} alt="logo" style={{ width: '300px', height: 'auto', marginLeft: '60px', cursor: 'pointer'}} onClick={() => navigate('/')} />
+      <img src={logo} alt="logo" style={{ width: '300px', height: 'auto', marginLeft: '15%', cursor: 'pointer'}} onClick={() => navigate('/')} />
       <div className={style['chat-container']}>
         <div className={style['chat-body']}>
           {messageList.map((message, index) => (
@@ -93,7 +93,8 @@ export default function Chat({ socket }) {
               >
                 <strong>{message.authorId === socket.id ? 'Você' : message.author}</strong>
               </div>
-              {!message.systemMessage && <div className="message-text">{message.text}</div>}
+              <div className="message-text">{message.text}</div>
+
             </div>
           ))}
           <div ref={bottomRef} />
