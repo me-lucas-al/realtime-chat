@@ -5,7 +5,7 @@ const socketIO = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server, { cors: { origin: 'https://chat-00sd.onrender.com' } });
+const io = socketIO(server, { cors: { origin: 'https://chat-cheetah-1.onrender.com' } });
 
 const PORT = 3001;
 const messages = [];
