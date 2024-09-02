@@ -13,7 +13,7 @@ export default function Join({ setSocket }) {
     const username = usernameRef.current.value;
     if (!username.trim()) return;
 
-    const socket = await io.connect('https://chat-cheetah.vercel.app');
+    const socket = await io.connect('wss://chat-cheetah.onrender.com');
 
     socket.on('error_message', (errorMessage) => {
       alert(errorMessage); 
@@ -31,7 +31,7 @@ export default function Join({ setSocket }) {
   return (
     <>
     <div className="img">
-      <img src={logo} alt="logo" style={{ width: '400px', height: 'auto', marginBottom: '10%'}} onClick={() => navigate('/')} />
+      <img src={logo} alt="logo" style={{ width: '400px', height: 'auto', marginBottom: '15%'}} onClick={() => navigate('/')} />
     </div>
     <div className={style['join-container']}>
       <h2>Registre seu usuário</h2>
