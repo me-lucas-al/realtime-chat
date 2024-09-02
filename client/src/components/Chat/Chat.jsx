@@ -3,13 +3,19 @@ import { Input } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import style from './Chat.module.css';
 import logo from '/src/components/images/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 export default function Chat({ socket }) {
   const bottomRef = useRef();
   const messageRef = useRef();
   const [messageList, setMessageList] = useState([]);
   const [userColors, setUserColors] = useState({});
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!socket) {
+      navigate('/');
+    }})
   useEffect(() => {
     socket.on('receive_message', (data) => {
       if (Array.isArray(data)) {
@@ -20,7 +26,7 @@ export default function Chat({ socket }) {
     });
 
     return () => socket.off('receive_message');
-  }, [socket]);
+  }, [socket, navigate]);
 
   useEffect(() => {
     setMessageList((prevList) => 

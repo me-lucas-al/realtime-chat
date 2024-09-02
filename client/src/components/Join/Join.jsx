@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import io from 'socket.io-client';
 import style from './Join.module.css';
-import { Input, Button } from '@mui/material';
+import { Input} from '@mui/material';
 import logo from '/src/components/images/logo.png';
 
 export default function Join({ setSocket }) {
@@ -36,7 +36,7 @@ export default function Join({ setSocket }) {
     <div className={style['join-container']}>
       <h2>Registre seu usuário</h2>
       <Input inputRef={usernameRef} placeholder='Nome de usuário' />
-      <button style={{ width: '120px', height: 'auto', background: 'black', marginTop: '5%'}} sx={{mt:2}} onClick={handleSubmit} variant="contained">Entrar</button>
+      <button style={{ width: '120px', height: 'auto', background: 'black', marginTop: '5%'}} onClick={handleSubmit} variant="contained">Entrar</button>
       <Link to="/" style={{marginTop: '20px', marginBottom:'-10px'}}>Voltar</Link>
     </div>
     </>
