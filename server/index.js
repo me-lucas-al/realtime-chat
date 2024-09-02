@@ -5,6 +5,12 @@ const io = require('socket.io')(server, { cors: { origin: '*' } });
 const PORT = 3001;
 const messages = [];
 
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 io.on('connection', (socket) => {
   console.log('Usuário conectado!', socket.id);
 

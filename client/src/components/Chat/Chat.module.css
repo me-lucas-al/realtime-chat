@@ -24,8 +24,8 @@
     padding: 5px 10px;
     border-radius: 7px;
     align-self: start;
-    word-wrap: normal;
-    overflow-wrap: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     white-space: pre-wrap;
   }
   
