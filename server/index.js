@@ -5,7 +5,7 @@ const socketIO = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server, { cors: { origin: 'https://chat-tz3m.onrender.com' } });
+const io = socketIO(server, { cors: { origin: 'wss://chat-tz3m.onrender.com' } });
 
 const PORT = process.env.PORT || 3001;
 const messages = [];
