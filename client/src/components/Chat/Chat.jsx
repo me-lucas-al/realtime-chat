@@ -11,11 +11,19 @@ export default function Chat({ socket }) {
   const [userColors, setUserColors] = useState({});
 
   useEffect(() => {
+    const savedMessages = JSON.parse(localStorage.getItem('messages')) || [];
+    setMessageList(savedMessages);
+
     socket.on('receive_message', (data) => {
       if (Array.isArray(data)) {
         setMessageList(data);
+        localStorage.setItem('messages', JSON.stringify(data));
       } else {
-        setMessageList((current) => [...current, data]);
+        setMessageList((current) => {
+          const newList = [...current, data];
+          localStorage.setItem('messages', JSON.stringify(newList));
+          return newList;
+        });
       }
     });
 
@@ -72,7 +80,7 @@ export default function Chat({ socket }) {
 
   return (
     <div>
-      <img src={logo} alt="logo" style={{ width: '300px', height: 'auto', marginLeft: '15%', cursor: 'pointer'}} onClick={() => navigate('/')} />
+      <img src={logo} alt="logo" style={{ width: '300px', height: 'auto', marginLeft: '60px', cursor: 'pointer' }} onClick={() => navigate('/')} />
       <div className={style['chat-container']}>
         <div className={style['chat-body']}>
           {messageList.map((message, index) => (
@@ -94,7 +102,6 @@ export default function Chat({ socket }) {
                 <strong>{message.authorId === socket.id ? 'Você' : message.author}</strong>
               </div>
               <div className="message-text">{message.text}</div>
-
             </div>
           ))}
           <div ref={bottomRef} />

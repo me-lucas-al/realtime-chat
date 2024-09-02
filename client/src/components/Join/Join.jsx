@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import io from 'socket.io-client';
 import style from './Join.module.css';
@@ -9,11 +9,20 @@ export default function Join({ setSocket }) {
   const usernameRef = useRef();
   const navigate = useNavigate(); 
 
+  useEffect(() => {
+    const savedUsername = localStorage.getItem('username');
+    if (savedUsername) {
+      usernameRef.current.value = savedUsername;
+    }
+  }, []);
+
   const handleSubmit = async () => {
     const username = usernameRef.current.value;
     if (!username.trim()) return;
 
-    const socket = await io.connect('wss://chat-cheetah.onrender.com');
+    localStorage.setItem('username', username);
+    
+    const socket = await io.connect('https://chat-cheetah-c48gyji2b-lukkaszzs-projects.vercel.app');
 
     socket.on('error_message', (errorMessage) => {
       alert(errorMessage); 
@@ -30,15 +39,15 @@ export default function Join({ setSocket }) {
 
   return (
     <>
-    <div className="img">
-      <img src={logo} alt="logo" style={{ width: '400px', height: 'auto', marginBottom: '10%'}} onClick={() => navigate('/')} />
-    </div>
-    <div className={style['join-container']}>
-      <h2>Registre seu usuário</h2>
-      <Input inputRef={usernameRef} placeholder='Nome de usuário' />
-      <button style={{ width: '120px', height: 'auto', background: 'black', marginTop: '5%'}} sx={{mt:2}} onClick={handleSubmit} variant="contained">Entrar</button>
-      <Link to="/" style={{marginTop: '20px', marginBottom:'-10px'}}>Voltar</Link>
-    </div>
+      <div className="img">
+        <img src={logo} alt="logo" style={{ width: '400px', height: 'auto', position: 'relative', bottom: '80px', cursor: 'pointer' }} onClick={() => navigate('/')} />
+      </div>
+      <div className={style['join-container']}>
+        <h2>Registre seu usuário</h2>
+        <Input inputRef={usernameRef} placeholder='Nome de usuário' />
+        <button style={{ width: '120px', height: 'auto', background: 'black', marginTop: '35px' }} onClick={handleSubmit} variant="contained">Entrar</button>
+        <Link to="/" style={{ marginTop: '20px', marginBottom: '-10px' }}>Voltar</Link>
+      </div>
     </>
   );
 }
