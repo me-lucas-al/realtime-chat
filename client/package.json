@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "install:dependencies": "npm install react-router-dom @mui/material @emotion/react @emotion/styled socket.io-client",
-    "build": "npm run install:dependencies && react-scripts build",
     "dev": "vite",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
