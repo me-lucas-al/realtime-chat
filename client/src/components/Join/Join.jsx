@@ -13,7 +13,7 @@ export default function Join({ setSocket }) {
     const username = usernameRef.current.value;
     if (!username.trim()) return;
 
-    const socket = await io.connect('http://localhost:3001');
+    const socket = await io.connect('https://chat-cheetah.onrender.com');
 
     socket.on('error_message', (errorMessage) => {
       alert(errorMessage); 
