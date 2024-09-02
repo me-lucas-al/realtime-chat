@@ -24,6 +24,9 @@
     padding: 5px 10px;
     border-radius: 7px;
     align-self: start;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    white-space: pre-wrap;
   }
   
   .message-mine{
