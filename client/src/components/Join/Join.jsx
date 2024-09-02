@@ -13,7 +13,7 @@ export default function Join({ setSocket }) {
     const username = usernameRef.current.value;
     if (!username.trim()) return;
 
-    const socket = await io.connect('wss://chat-cheetah.onrender.com');
+    const socket = await io.connect('https://chat-cheetah.vercel.app');
 
     socket.on('error_message', (errorMessage) => {
       alert(errorMessage); 
