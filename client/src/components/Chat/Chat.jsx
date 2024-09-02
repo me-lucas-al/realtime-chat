@@ -13,10 +13,6 @@ export default function Chat({ socket }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!socket) {
-      navigate('/');
-    }})
-  useEffect(() => {
     socket.on('receive_message', (data) => {
       if (Array.isArray(data)) {
         setMessageList(data);
@@ -26,7 +22,7 @@ export default function Chat({ socket }) {
     });
 
     return () => socket.off('receive_message');
-  }, [socket, navigate]);
+  }, [socket]);
 
   useEffect(() => {
     setMessageList((prevList) => 
@@ -78,7 +74,12 @@ export default function Chat({ socket }) {
 
   return (
     <div>
-      <img src={logo} alt="logo" style={{ width: '300px', height: 'auto', marginLeft: '15%', cursor: 'pointer'}} onClick={() => navigate('/')} />
+      <img 
+        src={logo} 
+        alt="logo" 
+        style={{ width: '300px', height: 'auto', marginLeft: '15%', cursor: 'pointer'}} 
+        onClick={() => navigate('/')} 
+      />
       <div className={style['chat-container']}>
         <div className={style['chat-body']}>
           {messageList.map((message, index) => (
@@ -100,14 +101,22 @@ export default function Chat({ socket }) {
                 <strong>{message.authorId === socket.id ? 'Você' : message.author}</strong>
               </div>
               <div className="message-text">{message.text}</div>
-
             </div>
           ))}
           <div ref={bottomRef} />
         </div>
         <div className={style['chat-footer']}>
-          <Input inputRef={messageRef} placeholder='Mensagem' onKeyDown={(e) => getEnterKey(e)} fullWidth />
-          <SendIcon sx={{ m: 1, cursor: 'pointer' }} onClick={handleSubmit} color="primary" />
+          <Input 
+            inputRef={messageRef} 
+            placeholder='Mensagem' 
+            onKeyDown={(e) => getEnterKey(e)} 
+            fullWidth 
+          />
+          <SendIcon 
+            sx={{ m: 1, cursor: 'pointer' }} 
+            onClick={handleSubmit} 
+            color="primary" 
+          />
         </div>
       </div>
     </div>
