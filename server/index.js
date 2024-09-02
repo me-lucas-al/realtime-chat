@@ -1,8 +1,13 @@
-const app = require('express')();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server, { cors: { origin: '*' } });
+const express = require('express');
+const path = require('path');
+const http = require('http');
+const socketIO = require('socket.io');
 
-const PORT = 3001;
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server, { cors: { origin: 'https://chat-tz3m.onrender.com' } });
+
+const PORT = process.env.PORT || 3001;
 const messages = [];
 
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -13,7 +18,6 @@ app.get('*', (req, res) => {
 
 io.on('connection', (socket) => {
   console.log('Usuário conectado!', socket.id);
-
   socket.emit('receive_message', messages);
 
   socket.on('set_username', (username) => {
