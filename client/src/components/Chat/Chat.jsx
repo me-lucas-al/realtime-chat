@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Input } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import style from './Chat.module.css';
-import logo from '/src/components/images/logo.png';
+import logo from '/src/assets/images/logo.png';
 import { useNavigate } from 'react-router-dom';
 
 export default function Chat({ socket }) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '/src/components/images/logo.png';
+import logo from '/src/assets/images/logo.png';
 import style from './Cadastro.module.css';
 
 export default function Cadastro() {
