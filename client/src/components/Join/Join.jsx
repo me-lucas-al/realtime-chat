@@ -12,7 +12,7 @@ export default function Join({ setSocket }) {
   const navigate = useNavigate(); 
 
   useEffect(() => {
-    const socket = io('wss://chat-cheetah.vercel.app', {
+    const socket = io('wss://chat-cheetah.onrender.com', {
       reconnectionAttempts: 3,
       timeout: 10000
     });
@@ -35,7 +35,7 @@ export default function Join({ setSocket }) {
     setErrorMessage('');
     setLoading(true);
 
-    const socket = io('wss://chat-cheetah.vercel.app');
+    const socket = io('wss://chat-cheetah.onrender.com');
     
     socket.emit('set_username', username);
 
