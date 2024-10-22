@@ -12,13 +12,13 @@ export default function Join({ setSocket }) {
   const navigate = useNavigate(); 
 
   useEffect(() => {
-    const socket = io('wss://chat-cheetah.onrender.com', {
+    const socket = io('wss://chat-cheetah.vercel.app', {
       reconnectionAttempts: 3,
       timeout: 10000
     });
 
     socket.on('connect_error', () => {
-      setErrorMessage('Falha na conexão com o servidor.');
+      setErrorMessage('Conectando com o servidor...');
     });
 
     setSocket(socket);
@@ -35,7 +35,7 @@ export default function Join({ setSocket }) {
     setErrorMessage('');
     setLoading(true);
 
-    const socket = io('wss://chat-cheetah.onrender.com');
+    const socket = io('wss://chat-cheetah.vercel.app');
     
     socket.emit('set_username', username);
 
@@ -72,7 +72,7 @@ export default function Join({ setSocket }) {
           {loading ? <CircularProgress size={24} color="inherit" /> : 'Entrar'}
         </button>
         <Link to="/" style={{ marginTop: '20px', marginBottom: '-10px' }}>Voltar</Link>
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>} 
+        {errorMessage && <p style={{ color: 'green' }}>{errorMessage}</p>} 
       </div>
     </>
   );
