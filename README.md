@@ -1,7 +1,46 @@
-Olá! além do código, também tem o site: https://chat-cheetah.vercel.app
+# 💬 Realtime Chat – Chat Cheetah
 
-Por ter sido feito um deploy de forma gratuita, ele demora algum segundos pra inicializar o chat após o registro de usuário (apenas no primeiro registro, após o isso ele funcionará normalmente), mas depois de alguns segundos, já entrará 
+[🔗 Acesse o site](https://chat-cheetah.vercel.app)
 
-Obrigado!
+Aplicação web de chat em tempo real com autenticação, troca de mensagens instantâneas e interface amigável. Ideal para quem deseja integrar comunicação em tempo real em suas aplicações.
 
-- Lucas
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **Frontend:**
+  - React.js
+  - Tailwind CSS
+  - Axios
+  - React Router DOM
+
+- **Backend:**
+  - Node.js
+  - Express
+  - WebSocket
+  - MongoDB (via Mongoose)
+
+---
+
+## 🧪 Funcionalidades
+
+- Registro e login de usuários
+- Criação de conversas privadas
+- Envio e recebimento de mensagens em tempo real
+- Interface limpa e responsiva
+- Deploy gratuito via Vercel
+
+---
+
+## ⚙️ Como rodar o projeto localmente
+
+### Pré-requisitos:
+- Node.js instalado
+- MongoDB local ou Atlas configurado
+
+### Clone o repositório
+
+```bash
+git clone https://github.com/me-lucas-al/realtime-chat.git
+cd realtime-chat
+
